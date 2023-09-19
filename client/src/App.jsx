@@ -8,6 +8,7 @@ import { useState } from "react";
 const App = () => {
   const [username, setUsername] = useState("");
   const [room, setRoom] = useState("");
+  const [socket, setSocket] = useState(null);
 
   const router = createBrowserRouter([
     {
@@ -18,12 +19,13 @@ const App = () => {
           setUsername={setUsername}
           setRoom={setRoom}
           room={room}
+          setSocket={setSocket}
         />
       ),
     },
     {
       path: "chat",
-      element: <Room username={username} room={room} />,
+      element: <Room username={username} room={room} socket={socket} />,
     },
   ]);
   return <RouterProvider router={router} />;
